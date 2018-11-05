@@ -15,12 +15,13 @@ ENV KAFKA_ADVERTISED_LISTENERS=${KAFKA_ADVERTISED_LISTENERS}
 ARG ALLOW_UNSIGNED=false
 ENV ALLOW_UNSIGNED=$ALLOW_UNSIGNED
 
-COPY include/etc/confluent/docker /etc/confluent/docker
-
-
 ADD init-docker.sh /opt 
 RUN chmod 777 /opt/init-docker.sh && \
   /opt/init-docker.sh
+  
+ADD kafkaGenConfig.sh /opt
+RUN chmod 777 /opt/kafkaGenConfig.sh && \
+  /opt/kafkaGenConfig.sh
 
 EXPOSE 9092
-ENTRYPOINT ["/etc/confluent/docker/run"]
+ENTRYPOINT ["/bin/bash", "-c" , "$ZK_HOME/bin/kafkaGenConfig.sh && exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/conf/kafka.properties"]
