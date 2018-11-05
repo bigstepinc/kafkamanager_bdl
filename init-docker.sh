@@ -22,7 +22,8 @@ tar xzf jdk-8u191-linux-x64.tar.gz && rm -rf jdk-8u191-linux-x64.tar.gz
 
 echo 'export JAVA_HOME=$JAVA_HOME' >> ~/.bashrc && \
 echo 'export PATH="$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin"' >> ~/.bashrc && \
-bash ~/.bashrc && cd $JAVA_HOME && update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 1
+bash ~/.bashrc 
+cd $JAVA_HOME && update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 1
     
 #Add Java Security Policies
 curl -L -C - -b "oraclelicense=accept-securebackup-cookie" -O http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip && \
