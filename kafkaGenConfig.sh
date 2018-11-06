@@ -29,7 +29,8 @@ KAFKA_SERVICE_PORT=${KAFKA_SERVICE_PORT:-"9092"}
 KAFKA_SERVICE_PORT_BROKER=${KAFKA_SERVICE_PORT_BROKER:-"9092"}
 KAFKA_DEBUG_LEVEL=${KAFKA_DEBUG_LEVEL:-"INFO"}
 KAFKA_HOME=${KAFKA_HOME:-"/etc/$COMPONENT"}
-KAFKA_CONFIG=${KAFKA_HOME:-"/etc/$COMPONENT"}
+KAFKA_CONF=${KAFKA_HOME:-"/etc/$COMPONENT"}
+KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE=${KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE:=-"false"}
 
 function validate_env() {
     echo "Validating environment"
@@ -123,6 +124,7 @@ function create_kafka_props () {
     echo "service.host=$KAFKA_SERVICE_HOST" >> $KAFKA_CONF/kafka.properties
     echo "log.dirs=$KAFKA_LOG_DIRS" >> $KAFKA_CONF/kafka.properties
     echo "listeners=PLAINTEXT://0.0.0.0:9092" >> $KAFKA_CONF/kafka.properties
+    echo "confluent.support.metrics.enable=$KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE" >> $KAFKA_CONF/kafka.properties
     echo "Created Kafka properties file"
 }
 
