@@ -13,7 +13,7 @@ pip install --no-cache-dir git+https://github.com/confluentinc/confluent-docker-
 apt remove --purge -y git 
 
 # Install Java 8
-echo "Installing and configuring Java
+echo "Installing and configuring Java"
 JAVA_HOME=$(JAVA_HOME:-/opt/jdk1.8.0_191)
 
 cd /opt && \
