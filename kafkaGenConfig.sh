@@ -91,8 +91,8 @@ function validate_env() {
         exit 1
     else 
         echo "POD=$POD_IP"
-        export KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT
-        echo KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT
+        export KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT_9092_TCP_PORT
+        echo KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT_9092_TCP_PORT
     fi
 
     echo "Environment validation successful"
