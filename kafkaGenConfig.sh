@@ -137,7 +137,7 @@ function create_log_props () {
     echo "log4j.rootLogger=$KAFKA_DEBUG_LEVEL, stdout" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.appender.stdout=org.apache.log4j.ConsoleAppender" >> $KAFKA_CONFIG/log4j.properties
     echo "llog4j.appender.stdout.layout=org.apache.log4j.PatternLayout" >> $KAFKA_CONFIG/log4j.properties
-    echo "log4j.appender.stdout.layout.ConversionPattern=[%d] %p %m (%c)%n" >> $KAFKA_CONFIG/log4j.properties
+    echo "log4j.appender.stdout.layout.ConversionPattern=[%d] %p %m \(%c\)%n" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.logger.kafka.authorizer.logger=WARN" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.logger.kafka.log.LogCleaner=INFO" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.logger.kafka.producer.async.DefaultEventHandler=DEBUG" >> $KAFKA_CONFIG/log4j.properties
@@ -150,7 +150,7 @@ function create_log_props () {
     echo "log4j.rootLogger=WARN, stderr" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.appender.stderr=org.apache.log4j.ConsoleAppender" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.appender.stderr.layout=org.apache.log4j.PatternLayout" >> $KAFKA_CONFIG/log4j.properties
-    echo "log4j.appender.stderr.layout.ConversionPattern=[%d] %p %m (%c)%n" >> $KAFKA_CONFIG/log4j.properties
+    echo "log4j.appender.stderr.layout.ConversionPattern=[%d] %p %m \(%c\)%n" >> $KAFKA_CONFIG/log4j.properties
     echo "log4j.appender.stderr.Target=System.err" >> $KAFKA_CONFIG/log4j.properties
 
     echo "Wrote log4j configuriation to $KAFKA_CONFIG/log4j.properties"
