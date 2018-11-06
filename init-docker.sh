@@ -14,11 +14,12 @@ apt remove --purge -y git
 
 # Install Java 8
 echo "Installing and configuring Java"
-JAVA_HOME=$(JAVA_HOME:-/opt/jdk1.8.0_191)
 
 cd /opt && \
 wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz" &&\
 tar xzf jdk-8u191-linux-x64.tar.gz && rm -rf jdk-8u191-linux-x64.tar.gz
+
+export JAVA_HOME=$(JAVA_HOME:-/opt/jdk1.8.0_191)
 
 echo 'export JAVA_HOME=$JAVA_HOME' >> ~/.bashrc && \
 echo 'export PATH="$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin"' >> ~/.bashrc && \
