@@ -54,5 +54,6 @@ rm -rf /tmp/* /var/lib/apt/lists/*
 # Set up Kafka directories
 echo "Setting up Kafka directories" && \
 mkdir -p /var/lib/${COMPONENT}/data /etc/${COMPONENT}/secrets && \
+mkdir -p /var/log/${COMPONENT} /var/log/confluent /var/lib/zookeeper && \
 chmod -R ag+w /etc/${COMPONENT} /var/lib/${COMPONENT}/data /etc/${COMPONENT}/secrets && \
 chown -R root:root /var/log/${COMPONENT} /var/log/confluent /var/lib/${COMPONENT} /var/lib/zookeeper
