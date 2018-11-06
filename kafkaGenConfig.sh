@@ -32,6 +32,19 @@ KAFKA_DEBUG_LEVEL=${KAFKA_DEBUG_LEVEL:-"INFO"}
 
 function validate_env() {
     echo "Validating environment"
+    
+    export HOST=`hostname -s`
+    if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
+        NAME=${BASH_REMATCH[1]}
+        ORD=${BASH_REMATCH[2]}
+        export KAFKA_BROKER_ID=$ORD
+        echo "KAFKA_BROKER_ID=$ORD"
+    else
+        echo "Failed to extract ordinal from hostname $HOST"
+        exit 1
+    fi
+    
+    export KAFKA_SERVICE_HOST=${KAFKA_SERVICE_HOST:-"$HOST"}
 
     if [ -z $KAFKA_SERVICE_HOST ]; then
         echo "KAFKA_SERVICE_HOST is a mandatory environment variable"
@@ -80,17 +93,6 @@ function validate_env() {
         echo "POD=$POD_IP"
         export KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT
         echo KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:$KAFKA_PORT
-    fi
-    
-    export HOST=`hostname -s`
-    if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
-        NAME=${BASH_REMATCH[1]}
-        ORD=${BASH_REMATCH[2]}
-        export KAFKA_BROKER_ID=$ORD
-        echo "KAFKA_BROKER_ID=$ORD"
-    else
-        echo "Failed to extract ordinal from hostname $HOST"
-        exit 1
     fi
 
     echo "Environment validation successful"
