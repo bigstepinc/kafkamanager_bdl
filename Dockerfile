@@ -25,4 +25,4 @@ ADD kafkaGenConfig.sh /opt
 RUN chmod 777 ./opt/kafkaGenConfig.sh 
 
 EXPOSE 9092
-ENTRYPOINT ["/bin/bash", "-c" , "$KAFKA_HOME/bin/kafkaGenConfig.sh && exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/conf/kafka.properties"]
+ENTRYPOINT ["/bin/bash", "-c" , "$KAFKA_HOME/bin/kafkaGenConfig.sh &&  kafka-server-start $KAFKA_CONFIG/kafka.properties"]
