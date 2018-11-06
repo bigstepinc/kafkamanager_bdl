@@ -19,7 +19,7 @@ cd /opt && \
 wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz" &&\
 tar xzf jdk-8u191-linux-x64.tar.gz && rm -rf jdk-8u191-linux-x64.tar.gz
 
-export JAVA_HOME=$(JAVA_HOME:-/opt/jdk1.8.0_191)
+export JAVA_HOME=${JAVA_HOME:-/opt/jdk1.8.0_191}
 
 echo 'export JAVA_HOME=$JAVA_HOME' >> ~/.bashrc && \
 echo 'export PATH="$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin"' >> ~/.bashrc && \
@@ -47,6 +47,7 @@ add-apt-repository "deb [arch=amd64] http://packages.confluent.io/deb/${KAFKA_MA
 
 # Install Kafka
 echo "Installing Kafka"
+apt-get update -y 
 #apt-get install -y confluent-kafka-${SCALA_VERSION}=${KAFKA_VERSION}${CONFLUENT_PLATFORM_LABEL}-${CONFLUENT_DEB_VERSION} && \
 apt-get install -y confluent-kafka-${SCALA_VERSION}
 apt-get clean && \
