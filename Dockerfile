@@ -8,7 +8,7 @@ ENV KAFKA_MAJOR_VERSION="5"
 ENV KAFKA_MINOR_VERSION="0"
 ENV KAFKA_VERSION="2.0.0"
 ENV KAFKA_HOME="/etc/kafka"
-ENV KAFKA_CONFIG="/etc/kafka"
+ENV KAFKA_CONF="/etc/kafka"
 
 ARG KAFKA_ZOOKEEPER_CONNECT
 ENV KAFKA_ZOOKEEPER_CONNECT=${KAFKA_ZOOKEEPER_CONNECT}
@@ -25,4 +25,4 @@ ADD kafkaGenConfig.sh /opt
 RUN chmod 777 ./opt/kafkaGenConfig.sh 
 
 EXPOSE 9092
-ENTRYPOINT ["/bin/bash", "-c" , "$KAFKA_HOME/bin/kafkaGenConfig.sh &&  kafka-server-start $KAFKA_CONFIG/kafka.properties"]
+ENTRYPOINT ["/bin/bash", "-c" , "./opt/kafkaGenConfig.sh &&  kafka-server-start $KAFKA_CONF/kafka.properties"]
