@@ -127,7 +127,7 @@ function create_kafka_props () {
 function add_java_env() {
     echo "Adding JVM configuration properties"
     echo "heap.opts=$KAFKA_HEAP_OPTS" >> $KAFKA_CONF/kafka.properties
-    echo "jmx.port=$KAFKA_JMX_PORT >> $KAFKA_CONF/kafka.properties
+    echo "jmx.port=$KAFKA_JMX_PORT" >> $KAFKA_CONF/kafka.properties
     echo "Wrote JVM configuration to $$KAFKA_CONF/kafka.properties"
 }
 
