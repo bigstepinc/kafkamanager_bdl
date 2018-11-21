@@ -54,6 +54,7 @@ function validate_env() {
     else
         #KAFKA_SERVICE_HOST = ip that responds to nslookup for dns entry kafka_statefulset_name.namespace_name.domain
         echo "KAFKA_SERVICE_HOST=$KAFKA_SERVICE_HOST"
+        export KAFKA_PORT_9092_TCP_ADDR=$KAFKA_SERVICE_HOST
         echo "KAFKA_PORT_9092_TCP_ADDR=$KAFKA_SERVICE_HOST"
         
         export KAFKA_PORT_9092_TCP="tcp://$KAFKA_SERVICE_HOST:$KAFKA_SERVICE_PORT"
