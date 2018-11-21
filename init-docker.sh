@@ -21,7 +21,7 @@ git clone https://github.com/yahoo/kafka-manager.git && \
 cd kafka-manager/ && \
 sbt clean dist
 mv ./target/universal/kafka-manager-1.3.3.21.zip /opt && \
-rm -rf kafka-manager/ && \ 
+rm -rf /opt/kafka-manager/ && \ 
 cd /opt/ && \
 unzip kafka-manager-1.3.3.21.zip 
 rm -rf kafka-manager-1.3.3.21.zip 
