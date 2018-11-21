@@ -12,8 +12,8 @@ ADD init-docker.sh /opt
 RUN chmod 777 ./opt/init-docker.sh && \
   ./opt/init-docker.sh
   
-ADD kafkaGenConfig.sh /opt
-RUN chmod 777 ./opt/kafkaGenConfig.sh
+ADD kafkaManagerGenConfig.sh /opt
+RUN chmod 777 ./opt/kafkaManagerGenConfig.sh
 
 EXPOSE 9000
-ENTRYPOINT ["/bin/bash", "-c" , "./opt/kafkaGenConfig.sh && /opt/kafka-manager-1.3.3.21/bin/kafka-manager -Dconfig.file=/opt/kafka-manager-1.3.3.21/kafka.properties -Dkafka-manager.zkhosts=$ZOOKEEPER_CONNECT -DbasicAuthentication.enabled=true -DbasicAuthentication.username=$KAFKA_MANAGER_USERNAME -DbasicAuthentication.password=$KAFKA_MANAGER_PASSWORD -Dapplication.home=/opt/kafka-manager-1.3.3.21/"]
+ENTRYPOINT ["/bin/bash", "-c" , "./opt/kafkaManagerGenConfig.sh && /opt/kafka-manager-1.3.3.21/bin/kafka-manager"]
