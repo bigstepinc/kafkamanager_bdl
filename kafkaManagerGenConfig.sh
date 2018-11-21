@@ -19,11 +19,9 @@ KAFKA_MANAGER_PASSWORD=${KAFKA_MANAGER_PASSWORD:-"password"}
 function validate_env() {
     echo "Validating environment"
 
-    if [ -z $ZOOKEEPER_CONNECT ]; then
-        echo "ZOOKEEPER_CONNECT is a mandatory environment variable"
+    if [ -z $ZK_HOSTS ]; then
+        echo "ZK_HOSTS is a mandatory environment variable"
         exit 1
-   else
-        export ZK_HOSTS=$ZOOKEEPER_CONNECT
    fi
     
    if [ -z $KAFKA_MANAGER_USERNAME ]; then
