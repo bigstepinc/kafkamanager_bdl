@@ -51,7 +51,7 @@ function create_kafka_manager_config_file() {
     echo "play.http.context = \"/\"" >> $KAFKA_MANAGER_HOME/conf/application.conf
     echo "play.application.loader=loader.KafkaManagerLoader" >> $KAFKA_MANAGER_HOME/conf/application.conf
 
-    echo "kafka-manager.zkhosts=${ZK_HOSTS}" >> $KAFKA_MANAGER_HOME/conf/application.conf
+    echo "kafka-manager.zkhosts=\"${ZK_HOSTS}\"" >> $KAFKA_MANAGER_HOME/conf/application.conf
 
     echo "pinned-dispatcher.type=PinnedDispatcher" >> $KAFKA_MANAGER_HOME/conf/application.conf
     echo "pinned-dispatcher.executor=thread-pool-executor" >> $KAFKA_MANAGER_HOME/conf/application.conf
